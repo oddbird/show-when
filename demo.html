@@ -3,37 +3,57 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Demo of component-name Web Component" />
-    <title>component-name Web Component Demo</title>
+    <meta name="description" content="Demo of only-show Web Component" />
+    <title>Only-Show Web Component Demo</title>
 
-    <script type="module" src="component-name.js"></script>
+    <script type="module" src="only-show.js"></script>
+
+    <style>
+      [hidden] { display: none; }
+
+      only-show {
+        border: thin solid green;
+        display: block;
+        padding: 1em;
+
+        &::before {
+          content: " ✅ ";
+        }
+      }
+    </style>
   </head>
   <body>
+    <p>
+      Styles are added for the sake of demonstraction.
+      By default, this is an inline element
+      with no added styles.
+    </p>
+
     <h2>General usage example</h2>
-    <component-name>
-      <button>Button</button>
-    </component-name>
+    <p>
+      By adding the <code>hidden</code> attribute,
+      we can ensure that the element
+      defaults to hidden.
+    </p>
+    <only-show when-support="container-name: any" hidden>
+      This browser supports container queries
+    </only-show>
+
     <hr />
-    <h2>Example using a fallback method</h2>
-    <component-name>
-      <button>Button</button>
-      <a href="#">Anchor</a>
-    </component-name>
-    <style>
-      component-name:not(:defined) button,
-      component-name:defined a {
-        display: none;
-      }
-    </style>
-    <hr />
-    <h2>Example using options or additional fallback method</h2>
-    <component-name attribute="value">
-      <button>Button</button>
-    </component-name>
-    <style>
-      component-name[attribute="value"] {
-        outline: 1px solid red;
-      }
-    </style>
+
+    <h2>Fallback to visible</h2>
+    <p>
+      Without the <code>hidden</code> attribute,
+      we fallback to visible
+      before the component is registered
+      (eg without JS).
+      This element is conditioned on the
+      <a href="?edit">'edit' query parameter</a>.
+    </p>
+    <only-show when-param="edit">
+      Edit parameter is active,
+      or element has not registered
+      (<a href="?">remove parameter</a>)
+    </only-show>
   </body>
 </html>

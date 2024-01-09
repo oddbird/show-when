@@ -1,14 +1,14 @@
 {
-  "name": "@daviddarnes/component-name",
+  "name": "@oddbird/only-show",
   "version": "1.0.0",
-  "description": "A Web Component for…",
-  "main": "component-name.js",
+  "description": "A Web Component this shows or hides based on provided criteria",
+  "main": "only-show.js",
   "scripts": {
     "start": "npx http-server ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daviddarnes/component-name.git"
+    "url": "git+https://github.com/oddbird/only-show.git"
   },
   "keywords": [
     "web",
@@ -22,12 +22,12 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/daviddarnes/component-name/issues"
+    "url": "https://github.com/oddbird/only-show/issues"
   },
   "author": {
-    "name": "David Darnes",
-    "email": "me@daviddarnes.com",
-    "url": "https://darn.es/"
+    "name": "Miriam Suzanne",
+    "email": "miriam@oddbird.net",
+    "url": "https://oddbird.net/"
   },
-  "homepage": "https://github.com/daviddarnes/component-name#readme"
+  "homepage": "https://github.com/oddbird/only-show#readme"
 }
