@@ -26,8 +26,10 @@ class OnlyShow extends HTMLElement {
   }
 
   connectedCallback() {
-    // we could listen to window hash changes?
-    // or resize changes for media/container conditions?
+    window.addEventListener('hashchange', ()=> {
+      if(this.hasAttribute('when-hash')) this.showHide();
+    }, false);
+    // watch resize changes for media/container conditions?
   }
 
   disconnectedCallback() {
