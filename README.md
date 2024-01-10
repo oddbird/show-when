@@ -11,33 +11,33 @@ when given conditions are met.
 General usage example:
 
 ```html
-<script type="module" src="only-show.js"></script>
+<script type="module" src="show-when.js"></script>
 
-<only-show when-param="edit">
+<show-when has-param="edit">
   This will be visible by default,
   but will hide
   if the current url
   does not have
   the `edit` query parameter attached.
-</only-show>
+</show-when>
 
-<only-show when-support="container-name: any" hidden>
+<show-when has-support="container-name: any" hidden>
   This will be hidden by default,
   but show up in browsers
   that support container queries.
-</only-show>
+</show-when>
 ```
 
 Example using `has-any` option:
 
 ```html
-<script type="module" src="only-show.js"></script>
+<script type="module" src="show-when.js"></script>
 
-<only-show when-hash="slide-2" when-param="show_all" has-any>
+<show-when has-hash="slide-2" has-param="show_all" has-any>
   This will be visible
   if either the hash or query parameter
   is present in the URL
-</only-show>
+</show-when>
 ```
 
 ## ToDo
@@ -59,7 +59,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 
 ```html
 <!-- Host yourself -->
-<script type="module" src="only-show.js"></script>
+<script type="module" src="show-when.js"></script>
 ```
 
 ```html

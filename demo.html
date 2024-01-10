@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Demo of only-show Web Component" />
-    <title>Only-Show Web Component Demo</title>
+    <meta name="description" content="Demo of show-when Web Component" />
+    <title>show-when Web Component Demo</title>
 
-    <script type="module" src="only-show.js"></script>
+    <script type="module" src="show-when.js"></script>
 
     <style>
       [hidden] { display: none; }
 
-      only-show, only-hide {
+      show-when, hide-when {
         border: thin solid green;
         display: block;
         padding: 1em;
@@ -35,9 +35,9 @@
       we can ensure that the element
       defaults to hidden.
     </p>
-    <only-show when-support="container-name: any" hidden>
+    <show-when has-support="container-name: any" hidden>
       This browser supports container queries
-    </only-show>
+    </show-when>
 
     <hr />
 
@@ -50,15 +50,15 @@
       This element is conditioned on the
       <a href="?edit">'edit' query parameter</a>.
     </p>
-    <only-show when-param="edit">
+    <show-when has-param="edit">
       Edit parameter is active,
       or element has not registered
       (<a href="?">remove parameter</a>)
-    </only-show>
+    </show-when>
     
     <h2>Hide instead of show</h2>
     <p>
-      Alternatively, use the included `only-hide` component
+      Alternatively, use the included `hide-when` component
       to hide when the conditions match.
       This element is conditioned on the
       <a href="?readonly">'readonly' query parameter</a>
@@ -66,11 +66,11 @@
       <a href="?">Remove 'readonly' query parameter</a>
       to show.
     </p>
-    <only-hide when-param="readonly">
+    <hide-when has-param="readonly">
       Readonly parameter is not present,
       or element has not registered.
       (<a href="?readonly">add parameter</a>)
-    </only-hide>
+    </hide-when>
 
     <h2>Hash change</h2>
     <p>
@@ -78,12 +78,12 @@
       <a href="#read">#read</a>
       <a href="#">#</a>
     </p>
-    <only-show when-hash="edit">
+    <show-when has-hash="edit">
       hash = edit
-    </only-show>
-    <only-show when-hash="read">
+    </show-when>
+    <show-when has-hash="read">
       hash = read
-    </only-show>
+    </show-when>
 
   </body>
 </html>
