@@ -13,7 +13,7 @@ General usage example:
 ```html
 <script type="module" src="only-show.js"></script>
 
-<only-show with-param="edit">
+<only-show when-param="edit">
   This will be visible by default,
   but will hide
   if the current url
@@ -21,7 +21,7 @@ General usage example:
   the `edit` query parameter attached.
 </only-show>
 
-<only-show with-support="container-name: any" hidden>
+<only-show when-support="container-name: any" hidden>
   This will be hidden by default,
   but show up in browsers
   that support container queries.
@@ -33,7 +33,7 @@ Example using `has-any` option:
 ```html
 <script type="module" src="only-show.js"></script>
 
-<only-show with-hash="slide-2" with-param="show_all" has-any>
+<only-show when-hash="slide-2" when-param="show_all" has-any>
   This will be visible
   if either the hash or query parameter
   is present in the URL
