@@ -11,7 +11,7 @@
     <style>
       [hidden] { display: none; }
 
-      only-show {
+      only-show, only-hide {
         border: thin solid green;
         display: block;
         padding: 1em;
@@ -55,5 +55,21 @@
       or element has not registered
       (<a href="?">remove parameter</a>)
     </only-show>
+    
+    <h2>Hide instead of show</h2>
+    <p>
+      Alternatively, use the included `only-hide` component
+      to hide when the conditions match.
+      This element is conditioned on the
+      <a href="?readonly">'readonly' query parameter</a>
+      not being present.
+      <a href="?">Remove 'readonly' query parameter</a>
+      to show.
+    </p>
+    <only-hide when-param="readonly">
+      Readonly parameter is not present,
+      or element has not registered.
+      (<a href="?readonly">add parameter</a>)
+    </only-hide>
   </body>
 </html>

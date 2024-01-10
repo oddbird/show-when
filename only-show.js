@@ -96,3 +96,16 @@ class OnlyShow extends HTMLElement {
 }
 
 OnlyShow.register();
+
+class OnlyHide extends OnlyShow {
+  static register(tagName) {
+    if ("customElements" in window) {
+      customElements.define(tagName || "only-hide", OnlyHide);
+    }
+  }
+  showHide = () => {
+    this.toggleAttribute('hidden', this.matchConditions);
+  }
+}
+
+OnlyHide.register();
