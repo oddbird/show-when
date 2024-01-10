@@ -25,15 +25,17 @@ class OnlyShow extends HTMLElement {
     this.showHide();
   }
 
+  #hashChanged(){
+    if(this.hasAttribute('when-hash')) this.showHide();
+  }
+
   connectedCallback() {
-    window.addEventListener('hashchange', ()=> {
-      if(this.hasAttribute('when-hash')) this.showHide();
-    }, false);
+    window.addEventListener('hashchange', this.#hashChanged, false);
     // watch resize changes for media/container conditions?
   }
 
   disconnectedCallback() {
-    // remove any external listeners here…
+    window.removeEventListener('hashchange', this.#hashChanged);
   }
 
   get whenParam() { return this.getAttribute('when-param'); };
