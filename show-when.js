@@ -11,6 +11,7 @@ class ShowWhen extends HTMLElement {
     'has-lang',
     'has-media',
     'has-support',
+    'is-offline',
     // 'when-container',
     // by default, require all conditions to match
     'match-any',
@@ -29,13 +30,21 @@ class ShowWhen extends HTMLElement {
     if(this.hasAttribute('has-hash')) this.showHide();
   }
 
+  #networkStateChanged() {
+    if (this.hasAttribute('is-offline')) this.showHide();
+  }
+
   connectedCallback() {
     window.addEventListener('hashchange', this.#hashChanged.bind(this), false);
+    window.addEventListener('offline', this.#networkStateChanged.bind(this), false);
+    window.addEventListener('online', this.#networkStateChanged.bind(this), false);
     // watch resize changes for media/container conditions?
   }
 
   disconnectedCallback() {
     window.removeEventListener('hashchange', this.#hashChanged.bind(this));
+    window.removeEventListener('offline', this.#networkStateChanged.bind(this));
+    window.removeEventListener('online', this.#networkStateChanged.bind(this));
   }
 
   get hasParam() { return this.getAttribute('has-param'); };
@@ -43,6 +52,7 @@ class ShowWhen extends HTMLElement {
   get hasLang() { return this.getAttribute('has-lang') };
   get hasMedia() { return this.getAttribute('has-media') };
   get hasSupport() { return this.getAttribute('has-support') };
+  get isOffline() { return this.hasAttribute('is-offline') };
   // get whenContainer() { return this.getAttribute('has-container') };
   get matchAny() { return this.hasAttribute('match-any') };
 
@@ -78,12 +88,18 @@ class ShowWhen extends HTMLElement {
     return navigator.languages.includes(this.hasLang);
   }
 
+  #checkOffline = () => {
+    if (!this.isOffline) return;
+    return !navigator.onLine;
+  }
+
   #checkAll = () => [
     this.#checkParam(),
     this.#checkHash(),
     this.#checkMedia(),
     this.#checkSupport(),
     this.#checkLang(),
+    this.#checkOffline(),
   ];
 
   get matchConditions() {
