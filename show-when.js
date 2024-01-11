@@ -1,4 +1,3 @@
-// @ts-check
 class ShowWhen extends HTMLElement {
   static register(tagName) {
     if ("customElements" in window) {

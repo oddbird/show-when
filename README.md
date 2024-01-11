@@ -1,10 +1,10 @@
-# `only-show`
+# `show-when`
 
 A Web Component
 for showing or hiding content
 when given conditions are met.
 
-**[Demo](https://oddbird.github.io/only-show/demo.html)**
+**[Demo](https://oddbird.github.io/show-when/demo.html)**
 
 ## Examples
 
@@ -49,8 +49,8 @@ Example using `has-any` option:
 
 You have a few options (choose one of these):
 
-1. Install via [npm](https://www.npmjs.com/package/@oddbird/only-show): `npm install @oddbird/only-show`
-1. [Download the source manually from GitHub](https://github.com/oddbird/only-show/releases) into your project.
+1. Install via [npm](https://www.npmjs.com/package/@oddbird/show-when): `npm install @oddbird/show-when`
+1. [Download the source manually from GitHub](https://github.com/oddbird/show-when/releases) into your project.
 1. Skip this step and use the script directly via a 3rd party CDN (not recommended for production use)
 
 ### Usage
@@ -66,7 +66,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://www.unpkg.com/@oddbird/only-show@1.0.0/only-show.js"
+  src="https://www.unpkg.com/@oddbird/show-when/show-when.js"
 ></script>
 ```
 
@@ -74,7 +74,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://esm.sh/@oddbird/only-show@1.0.0"
+  src="https://esm.sh/@oddbird/show-when"
 ></script>
 ```
 

@@ -1,5 +1,5 @@
 {
-  "name": "@oddbird/only-show",
+  "name": "@oddbird/show-when",
   "version": "1.0.0",
   "description": "A Web Component this shows or hides based on provided criteria",
   "main": "show-when.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oddbird/only-show.git"
+    "url": "git+https://github.com/oddbird/show-when.git"
   },
   "keywords": [
     "web",
@@ -22,7 +22,7 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/oddbird/only-show/issues"
+    "url": "https://github.com/oddbird/show-when/issues"
   },
   "author": {
     "name": "Miriam Suzanne",
@@ -36,5 +36,5 @@
       "url": "https://oddbird.net/"
     }
   ],
-  "homepage": "https://github.com/oddbird/only-show#readme"
+  "homepage": "https://github.com/oddbird/show-when#readme"
 }
