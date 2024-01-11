@@ -1,14 +1,14 @@
 {
-  "name": "@oddbird/only-show",
+  "name": "@oddbird/show-when",
   "version": "1.0.0",
   "description": "A Web Component this shows or hides based on provided criteria",
-  "main": "only-show.js",
+  "main": "show-when.js",
   "scripts": {
     "start": "npx http-server ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oddbird/only-show.git"
+    "url": "git+https://github.com/oddbird/show-when.git"
   },
   "keywords": [
     "web",
@@ -22,12 +22,19 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/oddbird/only-show/issues"
+    "url": "https://github.com/oddbird/show-when/issues"
   },
   "author": {
     "name": "Miriam Suzanne",
     "email": "miriam@oddbird.net",
     "url": "https://oddbird.net/"
   },
-  "homepage": "https://github.com/oddbird/only-show#readme"
+  "contributors": [
+    {
+      "name": "James Stuckey Weber",
+      "email": "james@oddbird.net",
+      "url": "https://oddbird.net/"
+    }
+  ],
+  "homepage": "https://github.com/oddbird/show-when#readme"
 }

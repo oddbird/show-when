@@ -1,43 +1,43 @@
-# `only-show`
+# `show-when`
 
 A Web Component
 for showing or hiding content
 when given conditions are met.
 
-**[Demo](https://oddbird.github.io/only-show/demo.html)**
+**[Demo](https://oddbird.github.io/show-when/demo.html)**
 
 ## Examples
 
 General usage example:
 
 ```html
-<script type="module" src="only-show.js"></script>
+<script type="module" src="show-when.js"></script>
 
-<only-show when-param="edit">
+<show-when has-param="edit">
   This will be visible by default,
   but will hide
   if the current url
   does not have
   the `edit` query parameter attached.
-</only-show>
+</show-when>
 
-<only-show when-support="container-name: any" hidden>
+<show-when has-support="container-name: any" hidden>
   This will be hidden by default,
   but show up in browsers
   that support container queries.
-</only-show>
+</show-when>
 ```
 
 Example using `has-any` option:
 
 ```html
-<script type="module" src="only-show.js"></script>
+<script type="module" src="show-when.js"></script>
 
-<only-show when-hash="slide-2" when-param="show_all" has-any>
+<show-when has-hash="slide-2" has-param="show_all" has-any>
   This will be visible
   if either the hash or query parameter
   is present in the URL
-</only-show>
+</show-when>
 ```
 
 ## ToDo
@@ -49,8 +49,8 @@ Example using `has-any` option:
 
 You have a few options (choose one of these):
 
-1. Install via [npm](https://www.npmjs.com/package/@oddbird/only-show): `npm install @oddbird/only-show`
-1. [Download the source manually from GitHub](https://github.com/oddbird/only-show/releases) into your project.
+1. Install via [npm](https://www.npmjs.com/package/@oddbird/show-when): `npm install @oddbird/show-when`
+1. [Download the source manually from GitHub](https://github.com/oddbird/show-when/releases) into your project.
 1. Skip this step and use the script directly via a 3rd party CDN (not recommended for production use)
 
 ### Usage
@@ -59,14 +59,14 @@ Make sure you include the `<script>` in your project (choose one of these):
 
 ```html
 <!-- Host yourself -->
-<script type="module" src="only-show.js"></script>
+<script type="module" src="show-when.js"></script>
 ```
 
 ```html
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://www.unpkg.com/@oddbird/only-show@1.0.0/only-show.js"
+  src="https://www.unpkg.com/@oddbird/show-when/show-when.js"
 ></script>
 ```
 
@@ -74,7 +74,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://esm.sh/@oddbird/only-show@1.0.0"
+  src="https://esm.sh/@oddbird/show-when"
 ></script>
 ```
 
