@@ -16,6 +16,8 @@ class ShowWhen extends HTMLElement {
     'match-any',
   ];
 
+  #events = new Map();
+
   constructor() {
     super();
     this.showHide();
@@ -23,27 +25,55 @@ class ShowWhen extends HTMLElement {
 
   attributeChangedCallback() {
     this.showHide();
+    this.#checkEvents();
   }
 
-  #hashChanged(){
-    if(this.hasAttribute('has-hash')) this.showHide();
+  #checkEvents(){
+    const existingEvents = new Set(this.#events.keys());
+
+    const neededEvents = new Set();
+    if (this.hasAttribute('has-hash')) neededEvents.add('hash');
+    if (this.hasAttribute('has-network')) neededEvents.add('network');
+
+    neededEvents.forEach(event => {
+      if (!existingEvents.has(event)){
+        this.#addEvent(event);
+      } else existingEvents.delete(event);
+    });
+    // Remove remaining events that are no longer needed.
+    existingEvents.forEach(event=>{
+      this.#events.get(event).abort();
+      this.#events.delete(event);
+    });
   }
 
-  #networkStateChanged() {
-    if (this.hasAttribute('has-network')) this.showHide();
+  #addEvent(type){
+    const controller = new AbortController();
+    const options = {signal: controller.signal};
+    switch (type) {
+      case 'hash':
+        window.addEventListener('hashchange', this.showHide.bind(this), options);
+        break;
+      case 'network':
+        window.addEventListener('offline', this.showHide.bind(this), options);
+        window.addEventListener('online', this.showHide.bind(this), options);
+    
+      default:
+        break;
+    }
+    this.#events.set(type, controller);
+    return controller;
   }
 
   connectedCallback() {
-    window.addEventListener('hashchange', this.#hashChanged.bind(this), false);
-    window.addEventListener('offline', this.#networkStateChanged.bind(this), false);
-    window.addEventListener('online', this.#networkStateChanged.bind(this), false);
+    this.#checkEvents();
     // watch resize changes for media/container conditions?
   }
 
   disconnectedCallback() {
-    window.removeEventListener('hashchange', this.#hashChanged.bind(this));
-    window.removeEventListener('offline', this.#networkStateChanged.bind(this));
-    window.removeEventListener('online', this.#networkStateChanged.bind(this));
+    this.#events.forEach((controller)=>{
+      controller.abort();
+    });
   }
 
   get hasParam() { return this.getAttribute('has-param'); };
