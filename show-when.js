@@ -34,6 +34,7 @@ class ShowWhen extends HTMLElement {
     const neededEvents = new Set();
     if (this.hasAttribute('has-hash')) neededEvents.add('hash');
     if (this.hasAttribute('has-network')) neededEvents.add('network');
+    if (this.hasAttribute('has-media')) neededEvents.add(`media`);
 
     neededEvents.forEach(event => {
       if (!existingEvents.has(event)){
@@ -57,6 +58,11 @@ class ShowWhen extends HTMLElement {
       case 'network':
         window.addEventListener('offline', this.showHide.bind(this), options);
         window.addEventListener('online', this.showHide.bind(this), options);
+        break;
+      case 'media':
+        const mql = window.matchMedia(this.hasMedia);
+        mql.addEventListener('change', this.showHide.bind(this), options);
+        break;
     
       default:
         break;

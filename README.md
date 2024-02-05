@@ -43,7 +43,6 @@ Example using `has-any` option:
 ## ToDo
 
 - Add support for container queries
-- Watch for resize and hashChange and other events
 
 ## Installation
 
