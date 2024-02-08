@@ -45,13 +45,21 @@
     <p>
       Media query matching is reactive
       using the media query list's change event,
-      so it will update for both viewport size changes.</p>
+      so it will react to viewport 
+      and non-viewport media query changes.
+    </p>
 
-    <show-when has-media="(orientation: portrait)" hidden>
-      The viewport is portrait
+    <show-when id="change" has-media="(orientation: portrait)" hidden>
+      The viewport is portrait. Click to change.
     </show-when>
-    <show-when has-media="(orientation: landscape)" hidden>
-      The viewport is landscape
+    <script>
+      change.addEventListener('click', ()=>{
+        change.setAttribute('has-media', '(orientation: landscape)');
+        change.innerText = 'The media query is now `(orientation: landscape)`';
+      })
+    </script>
+    <show-when has-media="print" hidden>
+      Only show in print mode.
     </show-when>
     <hide-when has-media="(prefers-reduced-motion)" hidden>
       Hidden if user prefers reduced motion
