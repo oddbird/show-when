@@ -49,15 +49,12 @@
       and non-viewport media query changes.
     </p>
 
-    <show-when id="change" has-media="(orientation: portrait)" hidden>
-      The viewport is portrait. Click to change.
+    <show-when has-media="(orientation: portrait)" hidden>
+      The viewport is portrait. Resize to see updates.
     </show-when>
-    <script>
-      change.addEventListener('click', ()=>{
-        change.setAttribute('has-media', '(orientation: landscape)');
-        change.innerText = 'The media query is now `(orientation: landscape)`';
-      })
-    </script>
+    <show-when has-media="(orientation: landscape)" hidden>
+      The viewport is landscape. Resize to see updates.
+    </show-when>
     <show-when has-media="print" hidden>
       Only show in print mode.
     </show-when>
