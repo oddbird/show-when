@@ -18,6 +18,9 @@ class ShowWhen extends HTMLElement {
 
   #events = new Map();
 
+  /** @type {MediaQueryList?} */
+  #mediaQueryList = null;
+
   constructor() {
     super();
     this.showHide();
@@ -34,6 +37,7 @@ class ShowWhen extends HTMLElement {
     const neededEvents = new Set();
     if (this.hasAttribute('has-hash')) neededEvents.add('hash');
     if (this.hasAttribute('has-network')) neededEvents.add('network');
+    if (this.hasAttribute('has-media')) neededEvents.add(`media_${this.hasMedia}`);
 
     neededEvents.forEach(event => {
       if (!existingEvents.has(event)){
@@ -50,13 +54,18 @@ class ShowWhen extends HTMLElement {
   #addEvent(type){
     const controller = new AbortController();
     const options = {signal: controller.signal};
-    switch (type) {
-      case 'hash':
+    switch (true) {
+      case type === 'hash':
         window.addEventListener('hashchange', this.showHide.bind(this), options);
         break;
-      case 'network':
+      case type === 'network':
         window.addEventListener('offline', this.showHide.bind(this), options);
         window.addEventListener('online', this.showHide.bind(this), options);
+        break;
+      case type.startsWith('media'):
+        this.#ensureMediaQuery();
+        this.#mediaQueryList?.addEventListener('change', this.showHide.bind(this), options);
+        break;
     
       default:
         break;
@@ -102,9 +111,17 @@ class ShowWhen extends HTMLElement {
     return location.hash === `#${this.hasHash}`;
   }
 
+  // Makes sure that the active media query list matches hasMedia value
+  #ensureMediaQuery = () => {
+    if (!this.hasMedia) return;
+    if(this.#mediaQueryList?.media === this.hasMedia) return;
+    this.#mediaQueryList = window.matchMedia?.(this.hasMedia);
+  }
+
   #checkMedia = () => {
     if (!this.hasMedia) return;
-    return !!window.matchMedia?.(this.hasMedia).matches;
+    this.#ensureMediaQuery();
+    return !!this.#mediaQueryList?.matches;
   }
 
   #checkSupport = () => {
