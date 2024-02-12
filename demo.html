@@ -112,5 +112,20 @@
     <p>Use the <code>has-network</code> attribute to show/hide based on network status:</p>
     <show-when has-network="online">Now we're online</show-when>
     <show-when has-network="offline">Now we're offline</show-when>
+
+    <h2>Dynamic element creation</h2>
+    <button id="createElement" type="button">Create element</button>
+    <div id="dynamic"></div>
+    <script>
+      const createElement = document.getElementById('createElement');
+      createElement.addEventListener('click', () => {
+        const dynamic = document.getElementById('dynamic');
+        const el = document.createElement('show-when');
+        el.hidden = true;
+        el.setAttribute('has-support', 'display:block');
+        el.innerText = 'Supports `display:block`. Dynamically added, hidden by default but should be visible immediately.'
+        dynamic.appendChild(el);
+      });
+    </script>
   </body>
 </html>

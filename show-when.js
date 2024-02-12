@@ -23,12 +23,22 @@ class ShowWhen extends HTMLElement {
 
   constructor() {
     super();
-    this.showHide();
   }
 
   attributeChangedCallback() {
     this.showHide();
     this.#checkEvents();
+  }
+
+  connectedCallback() {
+    this.showHide();
+    this.#checkEvents();
+  }
+
+  disconnectedCallback() {
+    this.#events.forEach((controller)=>{
+      controller.abort();
+    });
   }
 
   #checkEvents(){
@@ -72,17 +82,6 @@ class ShowWhen extends HTMLElement {
     }
     this.#events.set(type, controller);
     return controller;
-  }
-
-  connectedCallback() {
-    this.#checkEvents();
-    // watch resize changes for media/container conditions?
-  }
-
-  disconnectedCallback() {
-    this.#events.forEach((controller)=>{
-      controller.abort();
-    });
   }
 
   get hasParam() { return this.getAttribute('has-param'); };
